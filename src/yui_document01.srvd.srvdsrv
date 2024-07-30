@@ -1,0 +1,4 @@
+@EndUserText.label: 'SD Document'
+define service YUI_DOCUMENT01 {
+  expose YC_DOCUMENT01;
+}

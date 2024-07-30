@@ -1,0 +1,4 @@
+@EndUserText.label: 'YC_PO'
+define service YC_PO {
+  expose YC_PO;
+}

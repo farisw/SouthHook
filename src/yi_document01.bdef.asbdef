@@ -1,0 +1,46 @@
+managed implementation in class zbp_i_document01 unique;
+strict ( 2 );
+with draft;
+
+define behavior for YI_DOCUMENT01 //alias <alias_name>
+persistent table ytab_document01
+draft table ytab_document01d
+lock master total etag LocalLastChangedAt
+authorization master ( global )
+etag master LastChangedAt
+//etag master <field_name>
+{
+ // administrative fields: read only
+  field ( readonly ) LastChangedAt, LocalLastChangedBy, LocalLastChangedAt , LocalCreatedBy ,
+                      LocalCreatedAt;
+
+  create;
+  update;
+  delete;
+
+
+  draft action Edit ;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare ;
+
+
+
+  mapping for ytab_document01
+  {
+    Invoice = invoice;
+    Comments = comments;
+    Attachment = attachment;
+    MimeType = mimetype;
+
+    Filename = filename;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}
